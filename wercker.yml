@@ -41,3 +41,10 @@ build:
     #     code: |
     #       echo "node version $(node -v) running"
     #       echo "npm version $(npm -v) running"
+deploy:
+  steps:
+    - heroku-deploy:
+        key-name: DEPLOY_KEY
+    - script:
+        name: install heroku-exit-status plugin
+        code: heroku plugins:install https://github.com/glenngillen/heroku-exit-status.git
