@@ -46,7 +46,10 @@ build:
     #       echo "node version $(node -v) running"
     #       echo "npm version $(npm -v) running"
 deploy:
+  box: python:alpine
   steps:
+    - pip-install:
+        packages_list: 'awscli'
     - script:
         name: aws s3 sync
         code: |
