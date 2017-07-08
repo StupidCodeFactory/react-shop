@@ -49,6 +49,7 @@ deploy:
   box: python:alpine
   steps:
     - pip-install:
+        requirements_file: ""
         packages_list: 'awscli'
     - script:
         name: aws s3 sync
