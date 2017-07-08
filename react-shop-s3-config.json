@@ -1,0 +1,12 @@
+{
+    "Bucket": "react-shop-stupid-code-factory",
+
+    "WebsiteConfiguration": {
+        "ErrorDocument": {
+            "Key": "index.html"
+        },
+        "IndexDocument": {
+            "Suffix": "index.html"
+        }
+    }
+}

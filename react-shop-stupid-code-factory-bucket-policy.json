@@ -1,0 +1,13 @@
+{
+    "Id": "",
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "Stmt1499527018558",
+        "Action": [
+            "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::react-shop-stupid-code-factory/*",
+        "Principal": "*"
+    }
+}

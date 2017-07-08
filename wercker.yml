@@ -34,6 +34,10 @@ build:
         name: Run tests
         code: |
           yarn test
+    - script:
+        name: create distibution
+        code: |
+          yarn dist
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     # - script:
@@ -43,8 +47,11 @@ build:
     #       echo "npm version $(npm -v) running"
 deploy:
   steps:
-    - heroku-deploy:
-        key-name: DEPLOY_KEY
     - script:
-        name: install heroku-exit-status plugin
-        code: heroku plugins:install https://github.com/glenngillen/heroku-exit-status.git
+        name: aws s3 sync
+        code: |
+          aws s3 sync  ./dist  s3://react-shop-stupid-code-factory
+    - script:
+        name: aws s3 policy
+        code: |
+          aws s3api  put-bucket-policy  --bucket react-shop-stupid-code-factory  --policy file://react-shop-stupid-code-factory-bucket-policy.json
