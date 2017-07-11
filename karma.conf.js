@@ -18,7 +18,11 @@ module.exports = function(config) {
       mocha: {}
     },
     singleRun: true,
-    reporters: [ 'mocha', 'coverage' ],
+    reporters: [ 'mocha', 'coverage', 'notify' ],
+    notifyReporter: {
+      reportEachFailure: true, // Default: false, Will notify on every failed sepc
+      reportSuccess: true,
+    },
     preprocessors: {
       'test/loadtests.js': [ 'webpack', 'sourcemap' ]
     },
