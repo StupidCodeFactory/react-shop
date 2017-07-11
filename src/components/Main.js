@@ -1,4 +1,5 @@
 require('normalize.css/normalize.css');
+require('imperavi-kube/dist/css/kube.css');
 require('styles/App.css');
 
 import React from 'react';
@@ -11,8 +12,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+        <h1>Products</h1>
         <ProductList/>
       </div>
     );

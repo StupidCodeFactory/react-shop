@@ -13,9 +13,10 @@ class ProductList extends React.Component {
   componentWillMount() {
     ProductActions.fetchProducts();
     ProductStore.on('change', () => {
-      this.state = {
+      console.log(this)
+      this.setState({
         products: ProductStore.getAll()
-      }
+      })
     })
   }
 

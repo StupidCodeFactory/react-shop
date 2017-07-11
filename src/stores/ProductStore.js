@@ -1,17 +1,11 @@
 'use strict';
 import { EventEmitter } from 'events/events';
 import dispatcher from '../components/Dispatcher.js';
-import  ProductSource from '../sources/ProductSource';
-
 
 class ProductStore extends EventEmitter {
   constructor() {
     super();
-    this.products = [
-      { id: 1, name: 'Bob', price: '12.23' },
-      { id: 2, name: 'Ali', price: '34.69' },
-      { id: 3, name: 'Ali', price: '14.64' }
-    ];
+    this.products = [];
   }
 
   getAll() {
@@ -19,11 +13,25 @@ class ProductStore extends EventEmitter {
     return this.products;
   }
 
+  reloadProducts(products) {
+    this.products = products;
+    console.reloaded
+    this.emit('change');
+  }
+
   handleActions(action) {
-    console.log(action)
-    /* switch(actions.type) {
-     *   case "FETCH_RECEIVED"
-     * }*/
+
+    switch(action.type) {
+      case "PRODUCTS_RECEIVED": {
+        let products = action.products.map((product) => {
+          product.attributes.id = product.id;
+          return product.attributes
+        })
+        console.log(products);
+        this.reloadProducts(products)
+      }
+
+    }
   }
 }
 

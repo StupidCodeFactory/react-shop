@@ -10,12 +10,29 @@ box: node
 
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
-# services:
-    # - postgres
+services:
+  - id: stupidcodefactory/react-shop-api:dev-latest
+    cmd: /pipeline/source/bin/rails s
+    ports: "3000"
     # http://devcenter.wercker.com/docs/services/postgresql.html
 
     # - mongo
     # http://devcenter.wercker.com/docs/services/mongodb.html
+dev:
+  box:
+    id: node
+    ports:
+      - "8000"
+  steps:
+    - install-packages:
+        packates: yarn
+    - script:
+        name: install dependencies
+        code: |
+          yarn
+    - internal/watch:
+        code: yarn serve
+
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
