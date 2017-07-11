@@ -11,6 +11,5 @@ export function creationFailed(error) {
 }
 
 export function received(products) {
-  console.log(this)
   dispatcher.dispatch(products);
 }

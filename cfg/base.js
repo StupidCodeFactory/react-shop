@@ -34,6 +34,9 @@ module.exports = {
       components: `${defaultSettings.srcPath}/components/`,
       sources: `${defaultSettings.srcPath}/sources/`,
       stores: `${defaultSettings.srcPath}/stores/`,
+      deserialisers: `${defaultSettings.srcPath}/deserialisers/`,
+      serialisers: `${defaultSettings.srcPath}/serialisers/`,
+      sources: `${defaultSettings.srcPath}/deserialisers/`,
       styles: `${defaultSettings.srcPath}/styles/`,
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
