@@ -5,18 +5,22 @@ import util from 'util';
 import {create} from 'apisauce';
 
 const api = create({
-  baseURL: 'http://0.0.0.0:3000',
+  baseURL: 'http://localhost:3000',
   headers: {'Accept': 'application/json'}
 })
 
 class ProductSource {
   fetchProducts(success, error) {
     return api.get('/products').then((response) => {
-      console.log(response)
-      success(response)
-    }).catch(() => {
-      error()
-    });
+      if (response.ok) {
+        success(response)
+      } else {
+        error(response)
+      }
+    }).catch((ohno) => {
+      error(ohno)
+    }
+    );
   }
 };
 
