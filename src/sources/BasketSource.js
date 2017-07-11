@@ -1,17 +1,26 @@
 'use strict';
 
 import util from 'util';
-import {create} from 'apisauce';
 
-const api = create({
-  baseURL: 'http://localhost:3000',
-  headers: {'Accept': 'application/json'}
-})
+import superagent from 'superagent';
+import superagentJsonapify from 'superagent-jsonapify';
 
-class ProductSource {
+superagentJsonapify(superagent);
+
+class BasketSource {
   create(productIds, success, error) {
-    return api.post('/checkouts')
+    return superagent
+      .post('http://localhost:3000/checkouts')
+      .send(productIds)
+      .set('Accept', 'application/json')
+      .end((err, result) => {
+        if(err) {
+          error(err)
+        } else {
+          success(result.body.data)
+        }
+      })
   }
 };
 
-export default new ProductSource
+export default new BasketSource

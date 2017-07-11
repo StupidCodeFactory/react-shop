@@ -4,17 +4,27 @@
 'use strict';
 
 import * as BasketActions from 'actions/BasketActions'
-import sinon from 'sinon';
+import BasketSource from 'sources/BasketSource'
 import sinonChai from 'sinon-chai';
 import dispatcher from 'components/Dispatcher';
 
 
 describe('BasketActions', function() {
   describe('create', function() {
-    const basketCreated = sinon.spy(BasketActions.received)
-    it('creates a basket', function() {
-      BasketActions.create([1])
-      expect(basketCreated).to.have.been.calledOnce
+
+    it('creates a basket', async function() {
+
+      const payload = [1]
+      const basket = { id: 'some-id', type: 'checkouts'}
+      sinon.stub(BasketActions, 'received')
+      const expectation = sinon.mock(BasketSource)
+      expectation.expects('create').once().withExactArgs(payload, BasketActions.received, BasketActions.creationFailed)
+
+      await BasketActions.create(payload)
+
+      expectation.verify();
+      expect(BasketActions.received).to.have.been.calledOnce
+      BasketActions.received.restore()
     })
 
   })

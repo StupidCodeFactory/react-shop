@@ -3,7 +3,7 @@ import BasketSource from '../sources/BasketSource';
 
 export function create(productIds) {
   BasketSource
-    .create(productIds, received, creationFailed)
+    .create(productIds, this.received, this.creationFailed)
 }
 
 export function creationFailed(error) {
@@ -11,6 +11,6 @@ export function creationFailed(error) {
 }
 
 export function received(products) {
-
+  console.log(this)
   dispatcher.dispatch(products);
 }
