@@ -1,4 +1,2 @@
-var Alt = require('alt');
-var alt = new Alt();
-
-module.exports = alt;
+import { Dispatcher } from 'flux'
+export default new Dispatcher
