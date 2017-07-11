@@ -4,18 +4,17 @@
 'use strict';
 
 import ProductSource from 'sources/ProductSource'
-import nock from 'nock'
 
 describe('ProductSource', ()=> {
   describe('fetchProducts', () => {
     beforeEach(() => {
-      /* ProductActions.fetchProducts()*/
     })
 
-    it('fectches products', () => {
-      nock.recorder.rec();
-
-      ProductSource.fetchProducts()
+    it('fectches products', (done) => {
+      ProductSource.fetchProducts((response) =>{
+        console.log(response)
+        done()
+      })
     })
   })
 })

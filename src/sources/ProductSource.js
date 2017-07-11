@@ -10,14 +10,13 @@ const api = create({
 })
 
 class ProductSource {
-  fetchProducts() {
-    api.get('/products').then(
-      ProductActions.receivedProducts
-    ).catch(
-      ProductActions.productsFailed
-    );
-
-    return
+  fetchProducts(success, error) {
+    return api.get('/products').then((response) => {
+      console.log(response)
+      success(response)
+    }).catch(() => {
+      error()
+    });
   }
 };
 

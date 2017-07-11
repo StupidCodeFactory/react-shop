@@ -74,7 +74,9 @@
         "promise-polyfill": "^6.0.2",
         "react": "^15.0.0",
         "react-dom": "^15.0.0",
-        "react-test-renderer": "^15.6.1"
+        "react-test-renderer": "^15.6.1",
+        "sinon": "^2.3.7",
+        "sinon-chai": "^2.11.0"
     },
     "name": "react-shop",
     "license": "MIT"

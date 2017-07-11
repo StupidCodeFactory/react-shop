@@ -1,22 +1,7 @@
 import dispatcher from '../components/Dispatcher.js';
-import {create} from 'apisauce';
-
-const api = create({
-  baseURL: 'http://0.0.0.0:3000',
-  headers: {'Accept': 'application/json'}
-})
 
 export function fetchProducts(ProductSource ) {
-
-  api.get('/products').then((response) => {
-    dispatcher.dispatch({
-      type: 'PRODUCTS_RECEIVED',
-      products: response.data.data
-    })}
-  ).catch((error) => {
-    console.log(error);
-    dispatcher.dispatch();
-  });
+  ProductSource.fetchProducts(this.receivedProducts, this.productsFailed)
 }
 
 export function updateProducts(location) {
